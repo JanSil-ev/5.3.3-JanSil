@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
+    />
+    <title>Страница не найдена</title>
+    <script>
+      (function () {
+        const base = '/5.2.9-JanSil';
+        const { pathname, search, hash } = window.location;
+        const cleanedPath = pathname.startsWith(base)
+          ? pathname.slice(base.length)
+          : pathname;
+        const redirect = (cleanedPath || '/') + search + hash;
+
+        sessionStorage.setItem('gh_redirect', redirect);
+        window.location.replace(base + '/');
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

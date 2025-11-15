@@ -1,0 +1,17 @@
+.card {
+  max-width: 480px;
+  width: 90%;
+  background-color: #fff;
+}
+
+.title {
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+
+
+.button {
+  align-self: flex-start;
+  background-color: #4263EB;
+}
