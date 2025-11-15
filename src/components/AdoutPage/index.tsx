@@ -1,4 +1,4 @@
-import { Center, Paper, Stack, Text } from '@mantine/core';
+import { Center, Chip, Paper, Stack, Tabs, Text } from '@mantine/core';
 import styles from './styles.module.css';
 
 export default function AboutPage() {
@@ -6,10 +6,12 @@ export default function AboutPage() {
     <Center py="xl">
       <Paper shadow="md" radius="lg" p="xl" withBorder className={styles.wrapper}>
         <Stack gap="md">
-          <Text className={styles.name}>Иван Васильев</Text>
+          <Text className={styles.name}>Жан Силантьев</Text>
           <Text className={styles.description}>
-            Привет! Я - Frontend-разработчик. Пишу приложения на React + TypeScript + Redux Toolkit.
+           Я - Frontend-разработчик. Пишу приложения на React + TypeScript + Redux Toolkit.
+          Учусь в школе программирования "Kata-academy".
           </Text>
+          <Chip size="lg">Посмотрел</Chip>
         </Stack>
       </Paper>
     </Center>

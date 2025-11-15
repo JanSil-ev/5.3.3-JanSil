@@ -12,8 +12,9 @@ export const Header = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const query = useAppSelector((state) => state.search.query);
-  const isVacanciesActive = useMatch('/vacancies/*');
+
   const isAboutActive = useMatch('/about');
+  const isVacanciesActive = !isAboutActive;
 
   const handleVacanciesClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -37,9 +38,7 @@ export const Header = () => {
       <nav className={styles.nav}>
         <NavLink
           to="/vacancies"
-          className={({ isActive }) =>
-            `${styles.link} ${isActive ? styles.active : ''}`
-          }
+          className={`${styles.link} ${isVacanciesActive ? styles.active : ''}`}
           onClick={handleVacanciesClick}
         >
           Вакансии FE {isVacanciesActive && <span className={styles.dot}></span>}
