@@ -9,6 +9,7 @@ import Header from './components/header';
 import JobPage from './components/job';
 import VacanciesPage from './components/Vacancies';
 import Error from './components/Error';
+import AboutPage from './components/AdoutPage';
 
 function Layout() {
   return (
@@ -30,13 +31,13 @@ export const router = createBrowserRouter(
       <Route path="/vacancies/moscow" element={<JobPage />} />
       <Route path="/vacancies" element={<JobPage />} />
       <Route path="/vacancies/:id" element={<VacanciesPage />} errorElement={<Error/>}/>
-      <Route path="/about" element={<div>About Page</div>} />
+      <Route path="/about" element={<AboutPage />} />
       <Route path="*" element={<Error />} />
     </Route>
           </>
   ),
   {
-    basename: '/5.2.9-JanSil/',
+    basename: '/5.3.3-JanSil/',
   }
 );
 

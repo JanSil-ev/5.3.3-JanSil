@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate, useMatch } from 'react-router-dom';
 import { Avatar } from '@mantine/core';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { setCity } from '@/store/slice/filtersSlice';
@@ -11,7 +11,9 @@ export const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const skills = useAppSelector((state) => state.skills.skills);
+  const query = useAppSelector((state) => state.search.query);
+  const isVacanciesActive = useMatch('/vacancies/*');
+  const isAboutActive = useMatch('/about');
 
   const handleVacanciesClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -21,7 +23,7 @@ export const Header = () => {
     }
 
     dispatch(setCity('all'));
-    dispatch(setQuery(''));
+    dispatch(setQuery(query));
     dispatch(renameSkills());
   };
 
@@ -33,18 +35,25 @@ export const Header = () => {
       </div>
 
       <nav className={styles.nav}>
-        <Link
+        <NavLink
           to="/vacancies"
-          className={`${styles.link} ${styles.active}`}
+          className={({ isActive }) =>
+            `${styles.link} ${isActive ? styles.active : ''}`
+          }
           onClick={handleVacanciesClick}
         >
-          Вакансии FE <span className={styles.dot}></span>
-        </Link>
+          Вакансии FE {isVacanciesActive && <span className={styles.dot}></span>}
+        </NavLink>
 
-        <Link to="/about" className={styles.link}>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            `${styles.link} ${isActive ? styles.active : ''}`
+          }
+        >
           <Avatar radius="xl" />
-          <p>Обо мне</p>
-        </Link>
+          Обо мне {isAboutActive && <span className={styles.dot}></span>}
+        </NavLink>
       </nav>
     </header>
   );
